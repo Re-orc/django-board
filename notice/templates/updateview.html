@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+<title>{% block title %}Update{% endblock %}</title>
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  {{form.as_p}}
+  <input type="submit" class="btn btn-info" value="저장">
+</form>
+{% endblock %}

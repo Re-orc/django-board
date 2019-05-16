@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+<title>{% block title %}Detail{% endblock %}</title>
+{% block content %}
+<table>
+  <tbody>
+    <p>Name : {{ posts.author }}</p>
+    <p>Title :{{ posts.title}}</p>
+    <p>Text : {{ posts.text }}</p>
+    {% if posts.file %}
+    <p>File : <a href="{{ posts.file.url }}">{{ posts.file }}</a></p>
+    {% endif %}
+  </tbody>
+</table>
+<a href="{% url 'notice:delete' pk=posts.id %}" type="button" class="btn btn-danger">삭제</a>
+<a href="{% url 'notice:update' pk=posts.id %}" type="button" class="btn btn-info">수정</a>
+<div class="di">
+  {% load disqus_tags %}
+  {% disqus_show_comments %}
+</div>
+
+{% endblock %}
